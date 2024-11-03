@@ -1,0 +1,123 @@
+2024-11-03 00:43:44,315 - ERROR - Database error occured while adding file record to db: (mysql.connector.errors.IntegrityError) 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`cloud_task`.`file`, CONSTRAINT `file_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `user` (`user_id`))
+[SQL: INSERT INTO file (name, url, created_by, status) VALUES (%(name)s, %(url)s, %(created_by)s, %(status)s)]
+[parameters: {'name': '1', 'url': '1', 'created_by': '1', 'status': 'ACTIVE'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-11-03 00:50:27,774 - ERROR - File with 1 not found: No row was found when one was required
+2024-11-03 00:51:18,774 - ERROR - Database error occured while updating file record with file_id 2 to db: (mysql.connector.errors.DatabaseError) 1265 (01000): Data truncated for column 'status' at row 1
+[SQL: UPDATE file SET status=%(status)s WHERE file.file_id = %(file_file_id)s]
+[parameters: {'status': 'delete', 'file_file_id': 2}]
+(Background on this error at: https://sqlalche.me/e/20/4xp6)
+2024-11-03 12:36:46,530 - INFO - User 1 is attempting to upload file: image001.jpg
+2024-11-03 12:36:46,597 - INFO - File with file_id: 6 uploaded by user with user_id: 1
+2024-11-03 12:55:56,334 - INFO - User 1 is attempting to upload file: Mahesh.jpeg
+2024-11-03 12:55:56,380 - INFO - File with file_id: 7 uploaded by user with user_id: 1
+2024-11-03 13:18:59,434 - ERROR - Error occurred while adding file record: local variable 'e' referenced before assignment
+2024-11-03 13:18:59,434 - ERROR - Error occurred while fetching file record with file_id: 1 : 
+2024-11-03 13:20:02,924 - ERROR - File with 1 not found
+2024-11-03 13:20:02,924 - ERROR - Error occurred while adding file record: 
+2024-11-03 13:20:02,924 - ERROR - Error occurred while fetching file record with file_id: 1 : 
+2024-11-03 13:23:17,614 - ERROR - File with 1 not found
+2024-11-03 13:23:17,615 - ERROR - Error occurred while adding file record: 
+2024-11-03 13:23:17,615 - ERROR - Error occurred while fetching file record with file_id: 1 : 
+2024-11-03 13:23:40,454 - ERROR - File with 1 not found
+2024-11-03 13:23:40,454 - ERROR - Error occurred while adding file record: 
+2024-11-03 13:23:40,454 - ERROR - Error occurred while fetching file record with file_id: 1 : 
+2024-11-03 13:24:18,480 - ERROR - File with 1 not found
+2024-11-03 13:25:04,748 - ERROR - File with 1 not found
+2024-11-03 13:25:09,282 - ERROR - File with 1 not found
+2024-11-03 13:25:19,646 - ERROR - File with 1 not found
+2024-11-03 13:25:19,646 - ERROR - Error occurred while adding file record: 
+2024-11-03 13:26:20,348 - ERROR - File with 1 not found
+2024-11-03 13:26:41,272 - ERROR - File with None not found
+2024-11-03 13:26:41,272 - ERROR - Error occurred while fetching file records: 
+2024-11-03 13:30:12,407 - ERROR - File with ID 1 not found
+2024-11-03 13:30:14,151 - ERROR - File with ID 1 not found
+2024-11-03 13:33:35,329 - ERROR - Error occurred while adding file record: local variable 'file' referenced before assignment
+2024-11-03 13:33:50,606 - ERROR - File with ID 1 not found
+2024-11-03 13:46:41,963 - ERROR - File with ID 1 not found
+2024-11-03 14:04:47,478 - ERROR - File with ID 2 not found
+2024-11-03 14:07:54,300 - ERROR - File with ID 2 not found
+2024-11-03 14:07:57,803 - ERROR - File with ID 1 not found
+2024-11-03 14:15:43,668 - ERROR - File with ID 1 not found
+2024-11-03 14:15:43,668 - ERROR - Error occurred while deleting file record with file_id: 1 : 
+2024-11-03 14:16:25,490 - ERROR - File with ID 1 not found
+2024-11-03 14:16:30,053 - ERROR - File with ID 2 not found
+2024-11-03 14:16:34,136 - ERROR - File with ID 8 not found
+2024-11-03 14:17:18,775 - ERROR - File with ID 7 not found
+2024-11-03 14:17:30,197 - ERROR - File with ID 3 not found
+2024-11-03 14:20:05,943 - ERROR - File with ID 4 not found
+2024-11-03 14:20:09,652 - ERROR - Error occurred while deleting file record with file_id: 5 : 'list' object has no attribute 'file_id'
+2024-11-03 14:20:21,226 - ERROR - File with ID 5 not found
+2024-11-03 14:28:01,062 - ERROR - Error occurred while getting operation counts: object dict can't be used in 'await' expression
+2024-11-03 14:47:53,811 - INFO - User 1 is attempting to upload file: Mahesh Shadow.jpeg
+2024-11-03 14:47:54,971 - ERROR - An error occurred while uploading to S3: An error occurred (SignatureDoesNotMatch) when calling the PutObject operation: The request signature we calculated does not match the signature you provided. Check your key and signing method.
+2024-11-03 14:47:54,971 - ERROR - Error occurred while adding file record: An error occurred (SignatureDoesNotMatch) when calling the PutObject operation: The request signature we calculated does not match the signature you provided. Check your key and signing method.
+2024-11-03 14:47:54,971 - ERROR - Error occurred while uploading file record: 
+2024-11-03 14:50:46,905 - INFO - User 1 is attempting to upload file: Mahesh Shadow.jpeg
+2024-11-03 14:50:47,748 - ERROR - An error occurred while uploading to S3: An error occurred (SignatureDoesNotMatch) when calling the PutObject operation: The request signature we calculated does not match the signature you provided. Check your key and signing method.
+2024-11-03 14:50:47,749 - ERROR - Error occurred while adding file record: An error occurred (SignatureDoesNotMatch) when calling the PutObject operation: The request signature we calculated does not match the signature you provided. Check your key and signing method.
+2024-11-03 14:50:47,749 - ERROR - Error occurred while uploading file record: 
+2024-11-03 14:51:10,515 - INFO - User 1 is attempting to upload file: Mahesh Shadow.jpeg
+2024-11-03 14:51:11,482 - ERROR - An error occurred while uploading to S3: An error occurred (SignatureDoesNotMatch) when calling the PutObject operation: The request signature we calculated does not match the signature you provided. Check your key and signing method.
+2024-11-03 14:51:11,482 - ERROR - Error occurred while adding file record: An error occurred (SignatureDoesNotMatch) when calling the PutObject operation: The request signature we calculated does not match the signature you provided. Check your key and signing method.
+2024-11-03 14:51:11,482 - ERROR - Error occurred while uploading file record: 
+2024-11-03 15:00:42,668 - INFO - User 1 is attempting to upload file: Mahesh Shadow.jpeg
+2024-11-03 15:00:44,031 - INFO - File uploaded to S3 at https://one-and-only-bucket-2.s3.us-east-1.amazonaws.com/1/Mahesh Shadow.jpeg.
+2024-11-03 15:00:44,076 - INFO - File with file_id: 8 uploaded by user with user_id: 1
+2024-11-03 15:01:59,911 - INFO - File 1/Mahesh Shadow.jpeg deleted from S3.
+2024-11-03 15:01:59,942 - INFO - File with ID 8 successfully deleted by user 1
+2024-11-03 15:14:47,062 - INFO - User 1 is attempting to upload file: Mahesh Shadow.jpeg
+2024-11-03 15:14:48,230 - INFO - File uploaded to S3 at https://one-and-only-bucket-2.s3.us-east-1.amazonaws.com/1/Mahesh Shadow.jpeg.
+2024-11-03 15:14:48,257 - INFO - File with file_id: 9 uploaded by user with user_id: 1
+2024-11-03 15:53:27,585 - INFO - User 1 is attempting to upload file: Mahesh Shadow.jpeg
+2024-11-03 15:53:29,034 - INFO - File uploaded to S3 at https://one-and-only-bucket-2.s3.us-east-1.amazonaws.com/1/Mahesh Shadow.jpeg.
+2024-11-03 15:53:29,067 - INFO - File with file_id: 10 uploaded by user with user_id: 1
+2024-11-03 15:56:02,699 - INFO - File 1/Mahesh Shadow.jpeg deleted from S3.
+2024-11-03 15:56:02,738 - INFO - File with ID 10 successfully deleted by user 1
+2024-11-03 16:17:24,924 - INFO - User 1 is attempting to upload file: Mahesh Shadow.jpeg
+2024-11-03 16:17:26,391 - INFO - File uploaded to S3 at https://one-and-only-bucket-2.s3.us-east-1.amazonaws.com/1/Mahesh Shadow.jpeg.
+2024-11-03 16:17:26,434 - INFO - File with file_id: 11 uploaded by user with user_id: 1
+2024-11-03 16:17:45,084 - ERROR - Error occurred while fetching file record with file_id: 11 : FilesServices.fetch_files() got an unexpected keyword argument 'file_id'
+2024-11-03 16:19:32,348 - INFO - File 1/Mahesh Shadow.jpeg deleted from S3.
+2024-11-03 16:19:32,367 - INFO - File with ID 11 successfully deleted by user 1
+2024-11-03 16:19:50,742 - ERROR - An error occurred while retrieving the file from S3: An error occurred (AccessDenied) when calling the GetObject operation: User: arn:aws:iam::036743346068:user/cloud_task_access_to_s3 is not authorized to perform: s3:ListBucket on resource: "arn:aws:s3:::one-and-only-bucket-2" because no identity-based policy allows the s3:ListBucket action
+2024-11-03 16:36:41,417 - INFO - File Mahesh Shadow.jpeg deleted from S3.
+2024-11-03 16:36:41,446 - INFO - File with ID 9 successfully deleted by user 1
+2024-11-03 16:37:02,836 - INFO - User 1 is attempting to upload file: Mahesh.jpeg
+2024-11-03 16:37:03,945 - INFO - File uploaded to S3 at https://one-and-only-bucket-2.s3.us-east-1.amazonaws.com/1/Mahesh.jpeg.
+2024-11-03 16:37:03,973 - INFO - File with file_id: 12 uploaded by user with user_id: 1
+2024-11-03 16:41:13,446 - ERROR - Error occurred while adding file record: can only concatenate str (not "int") to str
+2024-11-03 16:41:13,446 - ERROR - Error occurred while fetching file records: 
+2024-11-03 16:41:13,473 - ERROR - Error occurred while adding file record: can only concatenate str (not "int") to str
+2024-11-03 16:41:13,474 - ERROR - Error occurred while fetching file records: 
+2024-11-03 16:41:15,369 - ERROR - Error occurred while adding file record: can only concatenate str (not "int") to str
+2024-11-03 16:41:15,369 - ERROR - Error occurred while fetching file records: 
+2024-11-03 16:41:15,403 - ERROR - Error occurred while adding file record: can only concatenate str (not "int") to str
+2024-11-03 16:41:15,404 - ERROR - Error occurred while fetching file records: 
+2024-11-03 20:04:18,210 - INFO - User 1 is attempting to upload file: Mahesh.jpeg
+2024-11-03 20:04:19,450 - INFO - File uploaded to S3 at https://one-and-only-bucket-2.s3.us-east-1.amazonaws.com/1/Mahesh.jpeg.
+2024-11-03 20:04:19,473 - INFO - File with file_id: 1 uploaded by user with user_id: 1
+2024-11-03 20:04:39,960 - INFO - User 1 is attempting to upload file: test.json
+2024-11-03 20:04:41,365 - INFO - File uploaded to S3 at https://one-and-only-bucket-2.s3.us-east-1.amazonaws.com/1/test.json.
+2024-11-03 20:04:41,389 - INFO - File with file_id: 2 uploaded by user with user_id: 1
+2024-11-03 20:04:53,040 - ERROR - Error occurred while fetching file records: FilesServices.fetch_files() missing 1 required positional argument: 'current_user'
+2024-11-03 20:08:04,336 - ERROR - Error occurred while fetching file records: FilesServices.fetch_files() missing 1 required positional argument: 'current_user'
+2024-11-03 20:10:06,621 - INFO - File 1/test.json deleted from S3.
+2024-11-03 20:10:06,677 - INFO - File with ID 2 successfully deleted by user 1
+2024-11-03 20:10:11,107 - ERROR - File with ID 2 not found
+2024-11-03 20:23:29,166 - INFO - User 1 is attempting to upload file: Screenshot from 2024-10-29 16-35-30.png
+2024-11-03 20:23:30,914 - INFO - File uploaded to S3 at https://one-and-only-bucket-2.s3.us-east-1.amazonaws.com/1/Screenshot from 2024-10-29 16-35-30.png.
+2024-11-03 20:23:30,930 - INFO - File with file_id: 3 uploaded by user with user_id: 1
+2024-11-03 20:24:38,542 - INFO - File 1/Mahesh.jpeg deleted from S3.
+2024-11-03 20:24:38,566 - INFO - File with ID 1 successfully deleted by user 1
+2024-11-03 20:24:40,588 - INFO - File 1/Screenshot from 2024-10-29 16-35-30.png deleted from S3.
+2024-11-03 20:24:40,606 - INFO - File with ID 3 successfully deleted by user 1
+2024-11-03 20:24:52,974 - INFO - User 1 is attempting to upload file: Screenshot from 2024-10-29 18-11-55.png
+2024-11-03 20:24:54,518 - INFO - File uploaded to S3 at https://one-and-only-bucket-2.s3.us-east-1.amazonaws.com/Screenshot from 2024-10-29 18-11-55.png.
+2024-11-03 20:24:54,539 - INFO - File with file_id: 4 uploaded by user with user_id: 1
+2024-11-03 20:25:06,264 - INFO - User 1 is attempting to upload file: Screenshot from 2024-10-29 17-45-49.png
+2024-11-03 20:25:08,625 - INFO - File uploaded to S3 at https://one-and-only-bucket-2.s3.us-east-1.amazonaws.com/Screenshot from 2024-10-29 17-45-49.png.
+2024-11-03 20:25:08,652 - INFO - File with file_id: 5 uploaded by user with user_id: 1
+2024-11-03 20:27:20,087 - INFO - User 1 is attempting to upload file: Screenshot from 2024-10-29 16-38-09.png
+2024-11-03 20:27:22,030 - INFO - File uploaded to S3 at https://one-and-only-bucket-2.s3.us-east-1.amazonaws.com/Screenshot from 2024-10-29 16-38-09.png.
+2024-11-03 20:27:22,051 - INFO - File with file_id: 6 uploaded by user with user_id: 1
