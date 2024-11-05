@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from src.routes import test_route
 from src.routes import files_route
 from src.routes import operation_route
+from src.routes import user_route
 
 app = FastAPI()
 app.add_middleware(
@@ -15,5 +16,4 @@ app.add_middleware(
 
 app.include_router(files_route.router)
 app.include_router(operation_route.router)
-# app.include_router(auth_route.router, prefix="/auth", tags=["auth"])
-
+app.include_router(user_route.router)

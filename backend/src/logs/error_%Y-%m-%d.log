@@ -1,69 +1,14 @@
-2024-11-03 00:43:44,315 - ERROR - Database error occured while adding file record to db: (mysql.connector.errors.IntegrityError) 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`cloud_task`.`file`, CONSTRAINT `file_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `user` (`user_id`))
-[SQL: INSERT INTO file (name, url, created_by, status) VALUES (%(name)s, %(url)s, %(created_by)s, %(status)s)]
-[parameters: {'name': '1', 'url': '1', 'created_by': '1', 'status': 'ACTIVE'}]
-(Background on this error at: https://sqlalche.me/e/20/gkpj)
-2024-11-03 00:50:27,774 - ERROR - File with 1 not found: No row was found when one was required
-2024-11-03 00:51:18,774 - ERROR - Database error occured while updating file record with file_id 2 to db: (mysql.connector.errors.DatabaseError) 1265 (01000): Data truncated for column 'status' at row 1
-[SQL: UPDATE file SET status=%(status)s WHERE file.file_id = %(file_file_id)s]
-[parameters: {'status': 'delete', 'file_file_id': 2}]
-(Background on this error at: https://sqlalche.me/e/20/4xp6)
-2024-11-03 13:18:59,434 - ERROR - Error occurred while adding file record: local variable 'e' referenced before assignment
-2024-11-03 13:18:59,434 - ERROR - Error occurred while fetching file record with file_id: 1 : 
-2024-11-03 13:20:02,924 - ERROR - File with 1 not found
-2024-11-03 13:20:02,924 - ERROR - Error occurred while adding file record: 
-2024-11-03 13:20:02,924 - ERROR - Error occurred while fetching file record with file_id: 1 : 
-2024-11-03 13:23:17,614 - ERROR - File with 1 not found
-2024-11-03 13:23:17,615 - ERROR - Error occurred while adding file record: 
-2024-11-03 13:23:17,615 - ERROR - Error occurred while fetching file record with file_id: 1 : 
-2024-11-03 13:23:40,454 - ERROR - File with 1 not found
-2024-11-03 13:23:40,454 - ERROR - Error occurred while adding file record: 
-2024-11-03 13:23:40,454 - ERROR - Error occurred while fetching file record with file_id: 1 : 
-2024-11-03 13:24:18,480 - ERROR - File with 1 not found
-2024-11-03 13:25:04,748 - ERROR - File with 1 not found
-2024-11-03 13:25:09,282 - ERROR - File with 1 not found
-2024-11-03 13:25:19,646 - ERROR - File with 1 not found
-2024-11-03 13:25:19,646 - ERROR - Error occurred while adding file record: 
-2024-11-03 13:26:20,348 - ERROR - File with 1 not found
-2024-11-03 13:26:41,272 - ERROR - File with None not found
-2024-11-03 13:26:41,272 - ERROR - Error occurred while fetching file records: 
-2024-11-03 13:30:12,407 - ERROR - File with ID 1 not found
-2024-11-03 13:30:14,151 - ERROR - File with ID 1 not found
-2024-11-03 13:33:35,329 - ERROR - Error occurred while adding file record: local variable 'file' referenced before assignment
-2024-11-03 13:33:50,606 - ERROR - File with ID 1 not found
-2024-11-03 13:46:41,963 - ERROR - File with ID 1 not found
-2024-11-03 14:04:47,478 - ERROR - File with ID 2 not found
-2024-11-03 14:07:54,300 - ERROR - File with ID 2 not found
-2024-11-03 14:07:57,803 - ERROR - File with ID 1 not found
-2024-11-03 14:15:43,668 - ERROR - File with ID 1 not found
-2024-11-03 14:15:43,668 - ERROR - Error occurred while deleting file record with file_id: 1 : 
-2024-11-03 14:16:25,490 - ERROR - File with ID 1 not found
-2024-11-03 14:16:30,053 - ERROR - File with ID 2 not found
-2024-11-03 14:16:34,136 - ERROR - File with ID 8 not found
-2024-11-03 14:17:18,775 - ERROR - File with ID 7 not found
-2024-11-03 14:17:30,197 - ERROR - File with ID 3 not found
-2024-11-03 14:20:05,943 - ERROR - File with ID 4 not found
-2024-11-03 14:20:09,652 - ERROR - Error occurred while deleting file record with file_id: 5 : 'list' object has no attribute 'file_id'
-2024-11-03 14:20:21,226 - ERROR - File with ID 5 not found
-2024-11-03 14:28:01,062 - ERROR - Error occurred while getting operation counts: object dict can't be used in 'await' expression
-2024-11-03 14:47:54,971 - ERROR - An error occurred while uploading to S3: An error occurred (SignatureDoesNotMatch) when calling the PutObject operation: The request signature we calculated does not match the signature you provided. Check your key and signing method.
-2024-11-03 14:47:54,971 - ERROR - Error occurred while adding file record: An error occurred (SignatureDoesNotMatch) when calling the PutObject operation: The request signature we calculated does not match the signature you provided. Check your key and signing method.
-2024-11-03 14:47:54,971 - ERROR - Error occurred while uploading file record: 
-2024-11-03 14:50:47,748 - ERROR - An error occurred while uploading to S3: An error occurred (SignatureDoesNotMatch) when calling the PutObject operation: The request signature we calculated does not match the signature you provided. Check your key and signing method.
-2024-11-03 14:50:47,749 - ERROR - Error occurred while adding file record: An error occurred (SignatureDoesNotMatch) when calling the PutObject operation: The request signature we calculated does not match the signature you provided. Check your key and signing method.
-2024-11-03 14:50:47,749 - ERROR - Error occurred while uploading file record: 
-2024-11-03 14:51:11,482 - ERROR - An error occurred while uploading to S3: An error occurred (SignatureDoesNotMatch) when calling the PutObject operation: The request signature we calculated does not match the signature you provided. Check your key and signing method.
-2024-11-03 14:51:11,482 - ERROR - Error occurred while adding file record: An error occurred (SignatureDoesNotMatch) when calling the PutObject operation: The request signature we calculated does not match the signature you provided. Check your key and signing method.
-2024-11-03 14:51:11,482 - ERROR - Error occurred while uploading file record: 
-2024-11-03 16:17:45,084 - ERROR - Error occurred while fetching file record with file_id: 11 : FilesServices.fetch_files() got an unexpected keyword argument 'file_id'
-2024-11-03 16:19:50,742 - ERROR - An error occurred while retrieving the file from S3: An error occurred (AccessDenied) when calling the GetObject operation: User: arn:aws:iam::036743346068:user/cloud_task_access_to_s3 is not authorized to perform: s3:ListBucket on resource: "arn:aws:s3:::one-and-only-bucket-2" because no identity-based policy allows the s3:ListBucket action
-2024-11-03 16:41:13,446 - ERROR - Error occurred while adding file record: can only concatenate str (not "int") to str
-2024-11-03 16:41:13,446 - ERROR - Error occurred while fetching file records: 
-2024-11-03 16:41:13,473 - ERROR - Error occurred while adding file record: can only concatenate str (not "int") to str
-2024-11-03 16:41:13,474 - ERROR - Error occurred while fetching file records: 
-2024-11-03 16:41:15,369 - ERROR - Error occurred while adding file record: can only concatenate str (not "int") to str
-2024-11-03 16:41:15,369 - ERROR - Error occurred while fetching file records: 
-2024-11-03 16:41:15,403 - ERROR - Error occurred while adding file record: can only concatenate str (not "int") to str
-2024-11-03 16:41:15,404 - ERROR - Error occurred while fetching file records: 
-2024-11-03 20:04:53,040 - ERROR - Error occurred while fetching file records: FilesServices.fetch_files() missing 1 required positional argument: 'current_user'
-2024-11-03 20:08:04,336 - ERROR - Error occurred while fetching file records: FilesServices.fetch_files() missing 1 required positional argument: 'current_user'
-2024-11-03 20:10:11,107 - ERROR - File with ID 2 not found
+2024-11-05 22:44:47,788 - ERROR - An error occurred while retrieving the file from S3: An error occurred (AccessDenied) when calling the GetObject operation: User: arn:aws:iam::036743346068:user/cloud_task_access_to_s3 is not authorized to perform: s3:ListBucket on resource: "arn:aws:s3:::one-and-only-bucket-2" because no identity-based policy allows the s3:ListBucket action
+2024-11-05 22:46:22,576 - ERROR - An error occurred while retrieving the file from S3: An error occurred (AccessDenied) when calling the GetObject operation: User: arn:aws:iam::036743346068:user/cloud_task_access_to_s3 is not authorized to perform: s3:ListBucket on resource: "arn:aws:s3:::one-and-only-bucket-2" because no identity-based policy allows the s3:ListBucket action
+2024-11-05 22:47:43,004 - ERROR - An error occurred while retrieving the file from S3: An error occurred (AccessDenied) when calling the GetObject operation: User: arn:aws:iam::036743346068:user/cloud_task_access_to_s3 is not authorized to perform: s3:ListBucket on resource: "arn:aws:s3:::one-and-only-bucket-2" because no identity-based policy allows the s3:ListBucket action
+2024-11-05 23:17:33,937 - ERROR - Error occurred while fetching file: 'latin-1' codec can't encode character '\u2013' in position 54: ordinal not in range(256)
+2024-11-05 23:18:18,400 - ERROR - Error occurred while fetching file: 'latin-1' codec can't encode character '\u2013' in position 54: ordinal not in range(256)
+2024-11-05 23:19:04,401 - ERROR - Error occurred while fetching file: 'latin-1' codec can't encode character '\u2013' in position 54: ordinal not in range(256)
+2024-11-05 23:20:48,907 - ERROR - Error occurred while fetching file: 'latin-1' codec can't encode character '\u2013' in position 54: ordinal not in range(256)
+2024-11-05 23:25:39,462 - ERROR - Error occurred while fetching file: 'latin-1' codec can't encode character '\u2013' in position 54: ordinal not in range(256)
+2024-11-05 23:29:26,055 - ERROR - Error occurred while fetching file: 'latin-1' codec can't encode character '\u2013' in position 54: ordinal not in range(256)
+2024-11-05 23:29:58,949 - ERROR - Error occurred while fetching file: 'latin-1' codec can't encode character '\u2013' in position 54: ordinal not in range(256)
+2024-11-05 23:31:26,811 - ERROR - Error occurred while fetching file: 'latin-1' codec can't encode character '\u2013' in position 54: ordinal not in range(256)
+2024-11-05 23:36:44,842 - ERROR - Error occurred while fetching file: 'latin-1' codec can't encode character '\u2013' in position 54: ordinal not in range(256)
+2024-11-05 23:37:07,009 - ERROR - Error occurred while fetching file: 'latin-1' codec can't encode character '\u2013' in position 54: ordinal not in range(256)
+2024-11-05 23:40:25,516 - ERROR - Error occurred while fetching file: name 'encoded_filename' is not defined

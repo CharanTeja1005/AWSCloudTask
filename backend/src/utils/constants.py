@@ -39,3 +39,5 @@ class S3Config:
     REGION=os.getenv('REGION')
 
 DOWNLOAD_URL = 'http://localhost:8000/files/'
+
+SECRET_KEY = os.getenv('SECRET_KEY')

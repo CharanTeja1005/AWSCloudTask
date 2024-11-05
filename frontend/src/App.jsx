@@ -1,34 +1,66 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
+import { FILES_ENDPOINT, OPERATIONS_ENDPOINT, USER_ENDPOINT } from './constants/APIConstants';
 
 const App = () => {
-    const { loginWithRedirect, logout, user, isAuthenticated, isLoading } = useAuth0();
+    const { loginWithRedirect, logout, user, isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0();
     const [operations, setOperations] = useState({});
     const [files, setFiles] = useState([]);
     const [uploadFile, setUploadFile] = useState(null);
     const [message, setMessage] = useState('');
 
-    // Fetch operations and files on component mount
     useEffect(() => {
         if (isAuthenticated) {
+            createUser(); // Create or fetch user when authenticated
             fetchOperations();
             fetchFiles();
         }
-    }, [isAuthenticated]); // Run when authentication status changes
+    }, [isAuthenticated]);
+
+    const createUser = async () => {
+        try {
+            const token = await getAccessTokenSilently();
+            // Use the part before "@" symbol as username
+            const username = user.email.split('@')[0]; 
+
+            const response = await axios.post(USER_ENDPOINT, {
+                username: username,
+                email: user.email,
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            localStorage.setItem('token', response.data.token); // Store the token if needed
+        } catch (error) {
+            console.error('Error creating user:', error);
+        }
+    };
 
     const fetchOperations = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/operations');
+            const token = await getAccessTokenSilently();
+            const response = await axios.get(`${OPERATIONS_ENDPOINT}?token=${localStorage.getItem('token')}`, {
+                headers: {
+                    accept: 'application/json',
+                },
+            });
             setOperations(response.data);
         } catch (error) {
-            console.error('Error fetching operations:', error);
+            console.error('Error fetching operations:', error.response ? error.response.data : error);
+            setMessage('Failed to fetch operations.');
         }
     };
 
     const fetchFiles = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/files');
+            const token = await getAccessTokenSilently();
+            const response = await axios.get(`${FILES_ENDPOINT}?token=${localStorage.getItem('token')}`, {
+                headers: {
+                    accept: 'application/json',
+                },
+            });
             setFiles(response.data);
         } catch (error) {
             console.error('Error fetching files:', error);
@@ -40,11 +72,17 @@ const App = () => {
         formData.append('file', uploadFile);
 
         try {
-            await axios.post('http://localhost:8000/files', formData);
+            const token = await getAccessTokenSilently();
+            await axios.post(`${FILES_ENDPOINT}?token=${localStorage.getItem('token')}`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    accept: 'application/json',
+                },
+            });
             setMessage('File uploaded successfully!');
-            setUploadFile(null); // Clear the file input
-            fetchFiles(); // Refresh files
-            fetchOperations(); // Refresh operations
+            setUploadFile(null); // Reset the file input
+            fetchFiles(); // Re-fetch files to include the newly uploaded file
+            fetchOperations(); // Re-fetch operations to update the count
         } catch (error) {
             console.error('Error uploading file:', error);
             setMessage('Failed to upload file.');
@@ -53,27 +91,46 @@ const App = () => {
 
     const handleFileDelete = async (fileId) => {
         try {
-            await axios.delete(`http://localhost:8000/files/${fileId}`);
+            const token = await getAccessTokenSilently();
+            await axios.delete(`${FILES_ENDPOINT}/${fileId}?token=${localStorage.getItem('token')}`, {
+                headers: {
+                    accept: 'application/json',
+                },
+            });
             setMessage('File deleted successfully!');
-            fetchFiles(); // Refresh files
-            fetchOperations(); // Refresh operations
+            fetchFiles(); // Re-fetch files
+            fetchOperations(); // Re-fetch operations
         } catch (error) {
             console.error('Error deleting file:', error);
             setMessage('Failed to delete file.');
         }
     };
 
-    const handleFileDownload = (fileUrl) => {
-        window.open(fileUrl, '_blank');
-        fetchOperations(); // Refresh operations after downloading
+    const handleFileDownload = async (fileUrl, fileId) => {
+        try {
+            // Trigger the file download without redirecting the page
+            const token = localStorage.getItem('token');
+            const downloadUrl = `${fileUrl}/?token=${token}`;
+
+            // Create an anchor element and trigger a click event to download the file
+            const a = document.createElement('a');
+            a.href = downloadUrl;
+            a.download = ''; // Optionally, you can specify a filename here
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+
+            // After initiating the download, update the operations count
+            fetchOperations(); // Re-fetch operations after download
+        } catch (error) {
+            console.error('Error downloading file:', error);
+        }
     };
 
-    // Render loading state if the Auth0 is loading
     if (isLoading) {
         return <div>Loading...</div>;
     }
 
-    // Render the application only if the user is authenticated
     if (!isAuthenticated) {
         return (
             <div style={{
@@ -82,7 +139,6 @@ const App = () => {
                 alignItems: 'center',
                 height: '100vh',
                 width: '100vw',
-                position: 'relative'
             }}>
                 <button onClick={loginWithRedirect}>Login</button>
             </div>
@@ -96,7 +152,6 @@ const App = () => {
             alignItems: 'center',
             height: '100vh',
             width: '100vw',
-            position: 'relative'
         }}>
             <div style={{
                 textAlign: 'center',
@@ -104,9 +159,9 @@ const App = () => {
                 border: '1px solid #ccc',
                 borderRadius: '8px',
                 width: '400px',
-                boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
+                boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
             }}>
-                <h1>File Operations</h1>
+                <h1>One Project</h1>
                 <div>
                     <h2>Welcome, {user.name}</h2>
                     <button onClick={() => logout({ returnTo: window.location.origin })}>
@@ -137,7 +192,7 @@ const App = () => {
                     {files.map(file => (
                         <li key={file.file_id}>
                             <span>{file.name}</span>
-                            <button onClick={() => handleFileDownload(file.url)}>Download</button>
+                            <button onClick={() => handleFileDownload(file.url, file.file_id)}>Download</button>
                             <button onClick={() => handleFileDelete(file.file_id)}>Delete</button>
                         </li>
                     ))}
@@ -147,6 +202,7 @@ const App = () => {
                 <input 
                     type="file" 
                     onChange={e => setUploadFile(e.target.files[0])} 
+                    key={uploadFile ? uploadFile.name : ''} // Reset file input after upload
                 />
                 <button onClick={handleFileUpload}>Upload</button>
 
